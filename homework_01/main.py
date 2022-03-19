@@ -44,3 +44,4 @@ def filter_numbers(check, spisok):
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
+power_numbers(2, 4, 5,)
