@@ -14,7 +14,7 @@ def power_numbers(*numbers, power=2):
     result = []
     for number in numbers:
         result.append(number ** power)
-    print(result)
+    return result
 
 # filter types
 ODD = "odd"
@@ -31,7 +31,7 @@ def PRIME(n):
     return isprime(n)
 
 def filter_numbers(check, spisok):
-    print(list(filter(spisok, check)))
+    return (list(filter(spisok, check)))
 
 
     """
@@ -44,4 +44,4 @@ def filter_numbers(check, spisok):
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-power_numbers(2, 4, 5,)
+
