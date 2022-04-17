@@ -5,20 +5,25 @@ from base import Vehicle
 from exceptions import CargoOverload
 
 class Plane(Vehicle):
-    def __init__(self, weight=0, started=False, fuel=0, fuel_consumption=0, cargo=0, max_cargo=0):
-        super().__init__(weight, started, fuel, fuel_consumption)
-        self.cargo = cargo
-        self.max_cargo = max_cargo
+    def __init__(self, weight=0, started=False, fuel=0, fuel_consumption=0, cargo=5, max_cargo=200):
+        self.weight = float(weight)
+        self.started = bool(started)
+        self.fuel = float(fuel)
+        self.fuel_consumption = float(fuel_consumption)
+        self.cargo = float(cargo)
+        self.max_cargo = float(max_cargo)
 
-    def load_cargo(self):
-        if self.cargo + self.load_cargo() <= self.max_cargo:
-            self.cargo = self.cargo + self.max_cargo
+    @staticmethod
+    def load_cargo(extcargo):
+        if Plane.cargo + extcargo <= Plane.max_cargo:
+            Plane.cargo = Plane.cargo + extcargo
         else:
-            raise CargoOverload(self.max_cargo)
+            raise CargoOverload()
 
-samolet_1 = Plane(weight=0, started=False, fuel=0, fuel_consumption=0, cargo=10, max_cargo=7)
+samolet_1 = Plane(weight=2500, started=False, fuel=0, fuel_consumption=0, cargo=10, max_cargo=7)
 print(vars(samolet_1))
-
-samolet_1.load_cargo()
-
 print(samolet_1)
+
+samolet_1.load_cargo(10)
+
+print(samolet_1.cargo)
