@@ -21,6 +21,5 @@ class Plane(Vehicle):
 
 
     def remove_all_cargo(self):
-        cargo = self.cargo
-        self.cargo = 0
+        cargo, self.cargo = self.cargo, 0
         return cargo
