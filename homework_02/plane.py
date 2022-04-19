@@ -1,29 +1,26 @@
 """
 создайте класс `Plane`, наследник `Vehicle`
 """
-from base import Vehicle
-from exceptions import CargoOverload
+from homework_02.base import Vehicle
+from homework_02.exceptions import CargoOverload
+
 
 class Plane(Vehicle):
-    def __init__(self, weight=0, started=False, fuel=0, fuel_consumption=0, cargo=5, max_cargo=200):
-        self.weight = float(weight)
-        self.started = bool(started)
-        self.fuel = float(fuel)
-        self.fuel_consumption = float(fuel_consumption)
-        self.cargo = float(cargo)
-        self.max_cargo = float(max_cargo)
+    cargo = 0
+    max_cargo = 1000
 
-    @staticmethod
-    def load_cargo(extcargo):
-        if Plane.cargo + extcargo <= Plane.max_cargo:
-            Plane.cargo = Plane.cargo + extcargo
+    def __init__(self, weight, fuel, fuel_consumption, max_cargo):
+        super(Plane, self).__init__(weight, fuel, fuel_consumption)
+        self.max_cargo = max_cargo
+
+    def load_cargo(self, kek):
+        if self.cargo + kek <= self.max_cargo:
+            self.cargo = self.cargo + kek
         else:
-            raise CargoOverload()
+            raise CargoOverload("Peregruzka")
 
-samolet_1 = Plane(weight=2500, started=False, fuel=0, fuel_consumption=0, cargo=10, max_cargo=7)
-print(vars(samolet_1))
-print(samolet_1)
 
-samolet_1.load_cargo(10)
-
-print(samolet_1.cargo)
+    def remove_all_cargo(self):
+        cargo = self.cargo
+        self.cargo = 0
+        return cargo

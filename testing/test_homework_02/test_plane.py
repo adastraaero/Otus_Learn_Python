@@ -54,7 +54,7 @@ class TestPlane:
         cargo = fake.pyint()
         plane.cargo = cargo
         assert plane.cargo > 0
-        res = plane.remove_all_cargo()
+        res = plane.remove_all_cargo
         assert res == cargo
         assert plane.cargo == 0
 
